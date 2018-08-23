@@ -1,6 +1,12 @@
 # floo
 ✈️ Flight Booking web app built for One Direct Challenge
 
+# Implemented Features 
+
+* Login / Signup new Users
+* Search Flights - try( DEL to BLR , DEL to JAI)
+* Booking option
+* All User Bookings
 
 # Screenshots
 
