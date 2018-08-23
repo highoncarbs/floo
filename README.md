@@ -3,11 +3,11 @@
 
 # Screenshots
 
-<img align="center" src="./assets/1.png"/>
-<img align="center" src="./assets/2.png"/>
-<img align="center" src="./assets/3.png" /> 
-<img align="center" src="./assets/4.png" /> 
-<img align="center" src="./assets/5.png" /> 
+<img align="center" src="./assets/1.PNG"/>
+<img align="center" src="./assets/2.PNG"/>
+<img align="center" src="./assets/3.PNG" /> 
+<img align="center" src="./assets/4.PNG" /> 
+<img align="center" src="./assets/5.PNG" /> 
 
 # Requirements
 
