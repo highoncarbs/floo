@@ -14,22 +14,31 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-@app.route('/')
+@app.route('/' ,  methods=['POST' , 'GET'])
 @login_required
 def index():
     form = forms.search_form()
     user = current_user.username 
+    form.origin.choices = [ (r.id , r.city ) for r in model.Airportorigin.query.order_by('city') ]
+    form.destination.choices = [ (r.id , r.city ) for r in model.Airportdest.query.order_by('city') ]
 
+    if form.validate_on_submit():
+        flights = db.session.query(model.flights).filter(model.flights.origin_id == int(form.origin.data)).filter(model.flights.destination_id == int(form.destination.data)).all()
+        date = form.date.data
+        person = form.num_people.data
+        return render_template('list.html' , flights = flights , username = user , date = date,  person = person), 200
+        
     return render_template('index.html' , form=  form , username = user), 200
 
-@app.route('/flights')
+
+@app.route('/flights/<f_id>' , methods=['POST' , 'GET'])
 @login_required
-def flights():
-    user = current_user.username 
-
-    return render_template('list.html' , username = user), 200
-
-
+def flights(f_id):
+    user = current_user
+    book = model.Book(flight_id = f_id , user_id = user.id)
+    db.session.add(book)
+    db.session.commit()
+    return redirect(url_for('user'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -62,7 +71,7 @@ def signup():
     mssg = ""
     if form.validate_on_submit():
         
-        user = model.User.query.filter_by(email = form.username.data).first()
+        user = model.User.query.filter_by(username = form.username.data).first()
         
         if user is None:
         
@@ -109,5 +118,5 @@ def user():
         - Export data 
     '''
     user = current_user.username 
-
+    booking = db.session.query(model.User).filter( model.User.id == user.id).all()
     return render_template('user.html' ,username=user),200

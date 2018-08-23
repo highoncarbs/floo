@@ -22,25 +22,47 @@
     </div>
 <div class="hero-body is-warning" >
     <div class="travel-info has-text-black has-text-centered is-warning">
-        <p class="fontbold" style="display:inline-block; border-bottom: 3px dotted black;">DEL<span style="padding-left: 2rem; border-bottom : none !important ;padding-right:2rem; font-family:'Archivo'; font-weight:400;">to</span>MUM</p>
+        <p class="fontbold">{{ flights[0].origin.pre_name.upper() }}<span style="padding-left: 2rem; border-bottom : none !important ;padding-right:2rem; font-family:'Archivo'; font-weight:400;">to</span>{{ flights[0].destination.pre_name.upper()   }}</p>
     </div>
     <br>
     <br>
     <div class="listing">
         <div class="box ">
             <div class="table-container">
-               <table class="table is-fullwidth">
-                    <thead>
+               <table class="table is-striped is-fullwidth">
+                    <thead class="is-size-4">
                         <th></th>
                         <th>Origin</th>
                         <th>Destination</th>
+                        <th>Depart</th>
+                        <th>Arrival</th>
                         <th>Travel Time</th>
                         <th>Type</th>
                         <th>Fare</th>
                         <th>Book</th>
                     </thead>
                     <tbody>
+                        {% for f in flights %}
+                            <tr class="has-text-centered is-vcentered is-size-5">
+                                <td>
+                                    <figure class="image is-128x128">
+                                    <img  class=" is-rounded"  src="{{ f.img }}" />
+                                </figure>
+                                </td>
+                                <td>{{ f.origin.city }}</td>
+                                <td>{{f.destination.city}}</td>
+                                <td>{{f.depart}}</td>
+                                <td>{{f.arrival}}</td>
+                                <td>{{f.time}} hours</td>
+                                <td>{{f.typeof}}</td>
 
+                                <td><span class="has-text-grey">Rs.</span> {{f.fare}} / per</td>
+                                <td>
+                                    <a class="button is-black has-text-weight-bold " href="{{url_for('flights',f_id= f.id)}}">Book Now!</a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>    
             </div>

@@ -49,3 +49,19 @@ body{
 .form-box{
     margin-left: 30%  !important: 
 }
+
+.box{
+    border: none !important;
+    box-shadow: 5px 5px 0 rgba(104, 104, 104, 0.2) !important; 
+
+}
+
+.is-rounded{
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.table{
+    font-family: 'Archivo' !important;
+    font-weight: 600;
+}
