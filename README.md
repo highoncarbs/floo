@@ -13,7 +13,8 @@
 
 Clone floo at your desired location `git clone https://github.com/padamsethia/floo`
 
-Install Mysql and create a database `floo`
+Install Mysql and create a database `floo` . Also configure your db URI . 
+By default the user is `root` at `localhost` database name `floo`.
 
 Run `pip install -r requirements.txt`
 
