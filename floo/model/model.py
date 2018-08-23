@@ -33,10 +33,11 @@ class flights(db.Model):
     destination_id = db.Column(db.Integer , db.ForeignKey('airportdest.id'))
     fare = db.Column(db.String(10) , nullable = False)
     time = db.Column(db.String(10) , nullable = False)
-    booking = db.relationship('Booking' , backref="booking" , lazy ="dynamic.")
+    booking = db.relationship('Booking' , backref="booking" , lazy ="dynamic")
 
 class Booking(db.Model):
     id = db.Column(db.Integer , primary_key = True)
     flight_id = db.Column(db.Integer , db.ForeignKey('flights.id'))
     user_id = db.Column(db.Integer , db.ForeignKey('user.id'))
-    
+    date = db.Column(db.String(10) , nullable = False)
+    people = db.Column(db.String(10) , nullable=False)

@@ -20,16 +20,32 @@
                     
             </nav>
     </div>
-<div class="hero-body is-warning  " >
+<div class="hero-body is-warning" >
     <div class="travel-info has-text-black  is-warning">
         <br>
         <p class="fontbold">Hello ! {{ username.title() }} 👋 </p>
-    </div>
-    <div class="orders">
-            
+        <br>
+        <br>
+        <br>
+        <div class="orders ">
+            {% for l in bookings %}
+                <div class="box is-narrow">
+                    <h1 class="fontbold has-text-black is-size-2">{{ l[2].origin.pre_name }}<span class="has-text-grey"> to </span>{{ l[2].destination.pre_name }}</h1>
+                    <br>
+                    <p class="is-size-4 fontbold has-text-info">STATUS : BOOKED</p>
+                    <br>
+                    <p class="fontbold is-size-4">On : {{ l[1].date }}</p>
+                    <br>
+                    <p class="fontbold is-size-4">For : {{ l[1].people }}</p>
+                    <hr>
+                    <p class="fontbold is-size-4 ">Total Fare : {{l[1].people|int*l[2].fare|int }} </p>
+                </span>
+                </div> 
+            {% endfor %}
+         </div>
     </div>
     <br>
-    <br>
+    
 </div>
 </div>
 </div>

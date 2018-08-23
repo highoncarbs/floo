@@ -17,6 +17,8 @@ login_manager.login_view = 'login'
 @app.route('/' ,  methods=['POST' , 'GET'])
 @login_required
 def index():
+    session['date'] = ""
+    session['people'] = ""
     form = forms.search_form()
     user = current_user.username 
     form.origin.choices = [ (r.id , r.city ) for r in model.Airportorigin.query.order_by('city') ]
@@ -24,9 +26,9 @@ def index():
 
     if form.validate_on_submit():
         flights = db.session.query(model.flights).filter(model.flights.origin_id == int(form.origin.data)).filter(model.flights.destination_id == int(form.destination.data)).all()
-        date = form.date.data
-        person = form.num_people.data
-        return render_template('list.html' , flights = flights , username = user , date = date,  person = person), 200
+        session['date'] = form.date.data
+        session['people'] = form.num_people.data
+        return render_template('list.html' , flights = flights , username = user , date = session['date'] ,  person = session['people']), 200
         
     return render_template('index.html' , form=  form , username = user), 200
 
@@ -35,7 +37,7 @@ def index():
 @login_required
 def flights(f_id):
     user = current_user
-    book = model.Book(flight_id = f_id , user_id = user.id)
+    book = model.Booking(flight_id = f_id , user_id = user.id , date = session['date'] , people = session['people'])
     db.session.add(book)
     db.session.commit()
     return redirect(url_for('user'))
@@ -118,5 +120,7 @@ def user():
         - Export data 
     '''
     user = current_user.username 
-    booking = db.session.query(model.User).filter( model.User.id == user.id).all()
-    return render_template('user.html' ,username=user),200
+    con = db.session.query(model.User).filter(model.User.username == str(user)).first()
+    bookings = db.session.query(model.User , model.Booking , model.flights).filter(model.Booking.flight_id == model.flights.id).all()   
+    print(bookings)
+    return render_template('user.html' ,username=user , bookings = bookings),200
