@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero is-fullheight is-fullwidth is-warning">
+    <div class="container">
+        <div class="hero-head">
+                <br>
+                <nav class="navbar">
+                        <div class="navbar-start is-size-1 has-text-black" >
+                            <a href="{{url_for('index')}}"><span  style="font-family: 'Archivo Black' ;font-weight:400 !important;">✈️ floo.</span></a>       
+                        </div>
+                            <div class="navabar-end">
+                                <div class="navabar-item is-pulled-right">
+                                    <div class="field is-grouped">
+                                        <p class="control">
+                                            <a class="button baseinput is-black is-size-4 " href="{{url_for('signup')}}">Sign up <ion-icon name="arrow-forward" style="padding-left: 1rem;;transform: rotate(90);"></ion-icon></a>
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                </nav>
+        </div>
+    <div class="hero-body" style="padding-left: 20% !important;">
+<div class="has-text-centered">
+        <form action="{{ url_for('login') }}" method="POST" class="is-size-4 form-box" >
+            {{ formlogin.hidden_tag() }}
+            <p class="fontbold has-text-black"> Log In . Get Going !</p>
+            <br>
+            {{ formlogin.username(class="input xinput " , placeholder = "Username or Email") }}
+            <br>
+            <br>
+            {{ formlogin.password(class="input xinput" , placeholder = "Password" )}}
+            <br>
+            <br>
+            <button class="button baseinput is-black is-size-3" type="submit" >Log in</button> 
+            <br>
+            {% if error_mssg %}
+            <div class="notification has-text-centered is-link">
+                <p class="">{{ error_mssg }}</p>
+            </div>
+            {% endif %}
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

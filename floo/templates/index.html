@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero is-warning  is-fullheight is-fullwidth">
+<div class="container">
+    <div class="hero-head">
+        <br>
+        <nav class="navbar">
+                <div class="navbar-start is-size-1 has-text-black" >
+                    <a href="{{url_for('index')}}"><span  style="font-family: 'Archivo Black' ;font-weight:400 !important;">✈️ floo.</span></a>       
+                </div>
+                    <div class="navabar-end">
+                        <div class="navabar-item is-pulled-right">
+                            <div class="field is-grouped">
+                                <p class="control">
+                                    <a href="{{url_for('user')}}" class="button baseinput is-black is-size-4 ">Hey ! {{ username.title() }} <ion-icon name="person" style="padding-left: 1rem;"></ion-icon></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+        </nav>
+    </div>
+    <div class="hero-body" style="padding-top: 7rem;">
+    <div class="content has-text-black ">
+        <p class="notification is-link has-text-centered is-size-5"> Search & One-way tickets with floo! 👌 </p>
+        <br>
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                <p style="font-size:5rem !important; ">
+                    Going from 
+                    <span class="field">
+                    <span class="control is-inline-flex">{{ form.origin(class="input xinput is-small" , placeholder = "Origin") }}</span>
+                    </span>
+                    <br>
+                    to 
+                    <span class="field">
+                    <span class="control is-inline-flex">{{ form.destination(class="input xinput is-large" , placeholder=" Destination") }}</span>
+                    </span>
+                    <br>
+                    on
+                    <span class="field">
+                    <span class="control is-inline-flex">{{ form.date(class="input xinput is-large" , placeholder="eg. 25/11/2018") }}</span>
+                    </span><br>
+                    with
+                    <span class="field">
+                    <span class="control is-inline-flex">{{ form.num_people(class="input xinput is-large" , placeholder="1 person") }}</span>
+                    </span> 
+                    <br> 
+                    <span class="control"><button class="button baseinput is-black is-size-2" style="margin-top:1rem;">Go <ion-icon name="airplane" style="padding-left: 1rem;"></ion-icon> </a></span>
+                </p>
+            </form>
+    </div>
+    </div>
+    <div class="hero-foot">
+        </div>
+
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="hero is-warning is-fullheight is-fullwidth">
+    <div class="container">
+    <div class="hero-head">
+            <br>
+            <nav class="navbar">
+                    <div class="navbar-start is-size-1 has-text-black" >
+                        <a href="{{url_for('index')}}"><span  style="font-family: 'Archivo Black' ;font-weight:400 !important;">✈️ floo.</span></a>       
+                    </div>
+                        <div class="navabar-end">
+                            <div class="navabar-item is-pulled-right">
+                                <div class="field is-grouped">
+                                    <p class="control">
+                                            <a href="{{url_for('user')}}" class="button baseinput is-black is-size-4 ">Hey ! {{ username.title() }} <ion-icon name="person" style="padding-left: 1rem;"></ion-icon></a>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+            </nav>
+    </div>
+<div class="hero-body is-warning  " >
+    <div class="travel-info has-text-black  is-warning">
+        <br>
+        <p class="fontbold">Hello ! {{ username.title() }} 👋 </p>
+    </div>
+    <div class="orders">
+            
+    </div>
+    <br>
+    <br>
+</div>
+</div>
+</div>
+{% endblock %}

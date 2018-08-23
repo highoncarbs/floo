@@ -1,0 +1,54 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="hero is-warning">
+    <div class="container">
+    <div class="hero-head">
+            <br>
+            <nav class="navbar">
+                    <div class="navbar-start is-size-1 has-text-black" >
+                        <a href="{{url_for('index')}}"><span  style="font-family: 'Archivo Black' ;font-weight:400 !important;">✈️ floo.</span></a>       
+                    </div>
+                        <div class="navabar-end">
+                            <div class="navabar-item is-pulled-right">
+                                <div class="field is-grouped">
+                                    <p class="control">
+                                            <a href="{{url_for('user')}}" class="button baseinput is-black is-size-4 ">Hey ! {{ username.title() }} <ion-icon name="person" style="padding-left: 1rem;"></ion-icon></a>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+            </nav>
+    </div>
+<div class="hero-body is-warning" >
+    <div class="travel-info has-text-black has-text-centered is-warning">
+        <p class="fontbold" style="display:inline-block; border-bottom: 3px dotted black;">DEL<span style="padding-left: 2rem; border-bottom : none !important ;padding-right:2rem; font-family:'Archivo'; font-weight:400;">to</span>MUM</p>
+    </div>
+    <br>
+    <br>
+    <div class="listing">
+        <div class="box ">
+            <div class="table-container">
+               <table class="table is-fullwidth">
+                    <thead>
+                        <th></th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Travel Time</th>
+                        <th>Type</th>
+                        <th>Fare</th>
+                        <th>Book</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+.hero .content p{
+    font-family: 'Archivo Black';
+    font-weight: 400;
+}
+
+body{
+    font-family: 'Archivo' !important;
+}
+
+.baseinput{
+    font-family: 'Archivo Black' !important;
+    font-weight: 400 !important;
+    font-size: 3rem !important;
+    transition: 0.2s all ease;
+    border: none !important;
+
+    box-shadow: 5px 5px  rgba(104, 104, 104, 0.2) !important; 
+}
+
+.fontbold{
+    font-weight: 400 !important;
+    font-size: 5rem !important;
+    font-family: 'Archivo Black' !important;
+}
+
+.baseinput:hover{
+    box-shadow: none !important;
+}
+.xinput{
+    color: black !important;
+    background-color: lightyellow !important;
+    font-family:inherit !important;
+    font-weight: 400 !important;
+    font-size: 3rem !important;
+    
+    border: none !important;
+    transition: 0.2s all ease;
+    box-shadow: 5px 5px  rgba(255, 140, 0, 0.2) !important; 
+
+}
+.input:hover{
+    box-shadow: none !important;
+}
+
+::placeholder{
+    color: lightgrey !important;
+}
+
+.form-box{
+    margin-left: 30%  !important: 
+}
