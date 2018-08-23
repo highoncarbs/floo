@@ -28,6 +28,16 @@ def index():
         flights = db.session.query(model.flights).filter(model.flights.origin_id == int(form.origin.data)).filter(model.flights.destination_id == int(form.destination.data)).all()
         session['date'] = form.date.data
         session['people'] = form.num_people.data
+
+        if len(flights) is 0 :
+            form = forms.search_form()
+            user = current_user.username 
+            form.origin.choices = [ (r.id , r.city ) for r in model.Airportorigin.query.order_by('city') ]
+            form.destination.choices = [ (r.id , r.city ) for r in model.Airportdest.query.order_by('city') ]
+
+            mssg = "No flights available for this route .<br> Please try a sample route DEL to JAI"
+            return render_template('index.html' , flights = flights , username = user ,mssg = mssg , form = form) , 200
+
         return render_template('list.html' , flights = flights , username = user , date = session['date'] ,  person = session['people']), 200
         
     return render_template('index.html' , form=  form , username = user), 200

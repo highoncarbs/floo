@@ -57,6 +57,6 @@ def add_flightdata(air , typeof , name , depart , arrival , time , origin_id , d
         db.session.add(edata)
         db.session.commit()
     
-if __name__ == "__main__""
+if __name__ == "__main__":
     airportdata()
     flightdata()
